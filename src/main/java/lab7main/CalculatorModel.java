@@ -34,13 +34,21 @@ public class CalculatorModel extends Observable {
 
     public void memoryAdd(double value) {
         if (!Double.isNaN(result)) {
-            memory = (memory == null) ? value : memory + value;
+            if (memory == null) {
+                memory = value;
+            } else {
+                result = memory + value;
+                setChanged();
+                notifyObservers(result);
+            }
         }
     }
 
     public void memorySubtract(double value) {
         if (memory != null) {
-            memory -= value;
+            result = value - memory;
+            setChanged();
+            notifyObservers(result);
         }
     }
 

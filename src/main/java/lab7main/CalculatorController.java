@@ -54,14 +54,18 @@ public class CalculatorController {
             case "M+":
                 try {
                     double screenVal = Double.parseDouble(view.screen.getText());
-                    if (currentOp.isEmpty()) {
+                    if (currentOp == "") {      //not entering this condition
                         model.memoryAdd(screenVal);
+                        System.out.println(screenVal);
+                        System.out.println("Memory Added");
                     } else {
                         view.screen.setText("Error");
+                        System.out.println(String.valueOf(currentOp));
                     }
                 } catch (Exception e) {
                     view.screen.setText("Error");
                 }
+                System.out.println("MR Break:");
                 break;
             case "M-":
                 try {
