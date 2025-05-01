@@ -1,7 +1,6 @@
 package main.java.lab7main;
-
+import javax.swing.*;
 import java.awt.event.*;
-import javax.swing.JButton;
 
 public class CalculatorController {
     private CalculatorModel model;
@@ -53,20 +52,43 @@ public class CalculatorController {
                 }
                 break;
             case "M+":
-                try { model.memoryAdd(Double.parseDouble(view.screen.getText())); }
-                catch (Exception e) { view.screen.setText("Error"); }
+                try {
+                    double screenVal = Double.parseDouble(view.screen.getText());
+                    if (currentOp.isEmpty()) {
+                        model.memoryAdd(screenVal);
+                    } else {
+                        view.screen.setText("Error");
+                    }
+                } catch (Exception e) {
+                    view.screen.setText("Error");
+                }
                 break;
             case "M-":
-                try { model.memorySubtract(Double.parseDouble(view.screen.getText())); }
-                catch (Exception e) { view.screen.setText("Error"); }
+                try {
+                    if (model.memoryRecall() != null) {
+                        double screenVal = Double.parseDouble(view.screen.getText());
+                        model.memorySubtract(screenVal);
+                    } else {
+                        view.screen.setText("Error");
+                    }
+                } catch (Exception e) {
+                    view.screen.setText("Error");
+                }
                 break;
             case "MR":
                 Double mem = model.memoryRecall();
-                if (mem != null) input = String.valueOf(mem);
-                view.screen.setText(input);
+                if (mem != null) {
+                    input = String.valueOf(mem);
+                    view.screen.setText(input);
+                    currentOp = "";
+                    awaitingSecond = false;
+                } else {
+                    view.screen.setText("Error");
+                }
                 break;
             case "MC":
                 model.memoryClear();
+                view.screen.setText("");
                 break;
             case "Del":
                 if (!input.isEmpty()) {
@@ -77,7 +99,7 @@ public class CalculatorController {
             case "C":
                 input = ""; currentOp = ""; awaitingSecond = false;
                 view.screen.setText("");
-                model.memoryClear();
+                //model.memoryClear();
                 break;
             default: // Digits and decimal
                 if (awaitingSecond) { input = ""; awaitingSecond = false; }

@@ -20,6 +20,7 @@ public class CalculatorModel extends Observable {
         }
         setChanged();
         notifyObservers(result);
+        memory = result;
     }
 
     public void calculateSingle(double op1, String operation) {
@@ -44,7 +45,12 @@ public class CalculatorModel extends Observable {
     }
 
     public Double memoryRecall() {
-        return memory;
+        if (!Double.isNaN(memory)) {
+            System.out.println("Memory Recall is Null");
+            System.out.println(memory);
+        }
+            return memory;
+
     }
 
     public void memoryClear() {
