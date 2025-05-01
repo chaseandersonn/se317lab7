@@ -1,8 +1,8 @@
-package lab7main;
+package main.java.lab7main;
 
 import java.util.Observable;
 
-class CalculatorModel extends Observable {
+public class CalculatorModel extends Observable {
     private double result = 0.0;
     private Double memory = null;
     private String currentOp = "";

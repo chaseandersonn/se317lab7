@@ -1,11 +1,11 @@
-package lab7main;
+package main.java.lab7main;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
 
-class CalculatorView extends JFrame implements Observer {
+public class CalculatorView extends JFrame implements Observer {
     JTextField screen = new JTextField();
     JPanel buttonPanel = new JPanel(new GridLayout(6, 4));
     String[] buttons = {
@@ -30,6 +30,7 @@ class CalculatorView extends JFrame implements Observer {
         for (int i = 0; i < buttons.length; i++) {
             btn[i] = new JButton(buttons[i]);
             btn[i].setFont(new Font("Arial", Font.BOLD, 18));
+            btn[i].setName("btn_" + buttons[i]);
             buttonPanel.add(btn[i]);
         }
 

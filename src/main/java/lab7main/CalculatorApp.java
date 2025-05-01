@@ -1,4 +1,4 @@
-package lab7main;
+package main.java.lab7main;
 
 public class CalculatorApp {
     public static void main(String[] args) {

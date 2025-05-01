@@ -1,10 +1,9 @@
-package lab7main;
+package main.java.lab7main;
 
 import java.awt.event.*;
-
 import javax.swing.JButton;
 
-class CalculatorController {
+public class CalculatorController {
     private CalculatorModel model;
     private CalculatorView view;
     private String input = "";
