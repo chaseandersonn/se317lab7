@@ -65,8 +65,8 @@ public class CalculatorController {
                 break;
             case "M-":
                 try {
-                    if (model.memoryRecall() != null) {
-                        double screenVal = Double.parseDouble(view.screen.getText());
+                    double screenVal = Double.parseDouble(view.screen.getText());
+                    if (currentOp.isEmpty()) {
                         model.memorySubtract(screenVal);
                     } else {
                         view.screen.setText("Error");
@@ -74,10 +74,6 @@ public class CalculatorController {
                 } catch (Exception e) {
                     view.screen.setText("Error");
                 }
-
-                try { model.memoryAdd(Double.parseDouble(view.screen.getText()));
-                }
-                catch (Exception e) { view.screen.setText("Error"); }
                 break;
             case "MR":
                 Double mem = model.memoryRecall();

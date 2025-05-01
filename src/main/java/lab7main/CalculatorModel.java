@@ -45,15 +45,19 @@ public class CalculatorModel extends Observable {
     }
 
     public void memorySubtract(double value) {
-        if (memory != null) {
-            result = value - memory;
-            setChanged();
-            notifyObservers(result);
+        if (!Double.isNaN(result)) {
+            if (memory == null) {
+                memory = value;
+            } else {
+                result = value  - memory;
+                setChanged();
+                notifyObservers(result);
+            }
         }
     }
 
     public Double memoryRecall() {
-        if (!Double.isNaN(memory)) {
+        if (memory == null) {
             System.out.println("Memory Recall is Null");
             System.out.println(memory);
         }
