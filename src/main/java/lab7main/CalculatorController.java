@@ -52,6 +52,7 @@ public class CalculatorController {
                 }
                 break;
             case "M+":
+<<<<<<< Updated upstream
                 try {
                     double screenVal = Double.parseDouble(view.screen.getText());
                     if (currentOp == "") {      //not entering this condition
@@ -78,6 +79,16 @@ public class CalculatorController {
                 } catch (Exception e) {
                     view.screen.setText("Error");
                 }
+=======
+                try { model.memoryAdd(Double.parseDouble(view.screen.getText()));
+                }
+                catch (Exception e) { view.screen.setText("Error"); }
+                break;
+            case "M-":
+                try { model.memorySubtract(Double.parseDouble(view.screen.getText()));
+                }
+                catch (Exception e) { view.screen.setText("Error"); }
+>>>>>>> Stashed changes
                 break;
             case "MR":
                 Double mem = model.memoryRecall();
