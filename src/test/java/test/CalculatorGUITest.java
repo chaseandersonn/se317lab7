@@ -89,39 +89,37 @@ public class CalculatorGUITest {
 		window.button("btn_3").click();
 		window.button("btn_=").click();
 		Thread.sleep(1000);
-		window.button("btn_M+").click();
-
 		window.button("btn_C").click();
-		window.button("btn_MR").click();
+		window.button("btn_5").click();
+		window.button("btn_M+").click();
 		Thread.sleep(2300);
-		window.textBox("screen").requireText("5.0");
+		window.textBox("screen").requireText("10.0");
 	}
 	@Test
 	public void testMPlus_invalidInput() throws InterruptedException {
+		window.button("btn_3").click();
 		window.button("btn_2").click();
+		window.button("btn_3").click();
+		window.button("btn_2").click(); // 3232
+		Thread.sleep(300);
+		window.button("btn_M+").click(); // Try M+ without "="
 		Thread.sleep(500);
-		window.button("btn_M+").click();
-
-		Thread.sleep(1000);
 		window.textBox("screen").requireText("Error");
 	}
 
 	@Test
 	public void testMMinus() throws InterruptedException {
 
-		window.button("btn_5").click();
+		window.button("btn_8").click();
 		window.button("btn_+").click();
-		window.button("btn_5").click();
-		window.button("btn_=").click(); // 10
-		window.button("btn_M+").click();
+		window.button("btn_8").click();
+		window.button("btn_=").click(); // 16
+		window.button("btn_C").click();
 		//execute next functions
 		window.button("btn_3").click();
-		window.button("btn_=").click(); // Execute 3
-		window.button("btn_M-").click();
-		window.button("btn_C").click();
-		window.button("btn_MR").click();
+		window.button("btn_M-").click(); //13
 		Thread.sleep(2300);
-		window.textBox("screen").requireText("7.0");
+		window.textBox("screen").requireText("13.0");
 	}
 	@Test
 	public void testMRecall() throws InterruptedException {
@@ -129,8 +127,6 @@ public class CalculatorGUITest {
 		window.button("btn_*").click();
 		window.button("btn_2").click();
 		window.button("btn_=").click(); // 8
-		window.button("btn_M+").click();
-
 		window.button("btn_C").click();
 		window.button("btn_MR").click(); // Should recall 8
 		Thread.sleep(2300);
@@ -139,11 +135,10 @@ public class CalculatorGUITest {
 	@Test
 	public void testMClear() throws InterruptedException {
 		window.button("btn_6").click();
-		window.button("btn_=").click();
-		window.button("btn_M+").click(); // Store 6
-
+		window.button("btn_*").click();
+		window.button("btn_5").click();
+		window.button("btn_=").click();//stores 30
 		window.button("btn_MC").click(); // Clear memory
-
 		window.button("btn_MR").click();
 		Thread.sleep(2300);
 		window.textBox("screen").requireText("0.0");
