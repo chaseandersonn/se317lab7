@@ -25,6 +25,7 @@ public class CalculatorView extends JFrame implements Observer {
 
         screen.setEditable(false);
         screen.setFont(new Font("Arial", Font.BOLD, 24));
+        screen.setName("screen");
         add(screen, BorderLayout.NORTH);
 
         for (int i = 0; i < buttons.length; i++) {

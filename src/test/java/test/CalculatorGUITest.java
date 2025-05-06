@@ -123,9 +123,8 @@ public class CalculatorGUITest extends JFrame {
 		window.button("btn_2").click();
 		window.button("btn_3").click();
 		window.button("btn_2").click(); // 3232
-//		Thread.sleep(300);
-		window.button("btn_M+").click(); // Try M+ without "="
-//		Thread.sleep(500);
+		Thread.sleep(300);
+		window.button("btn_M+").click(); // Try M+ without "="/		Thread.sleep(500);
 //		window.textBox().requireText("Error");
 		window.textBox("screen").requireText("Error");
 	}
@@ -141,7 +140,7 @@ public class CalculatorGUITest extends JFrame {
 		//execute next functions
 		window.button("btn_3").click();
 		window.button("btn_M-").click(); //13
-//		Thread.sleep(2300);
+		Thread.sleep(2300);
 //		window.textBox().requireText("13.0");
 		window.textBox("screen").requireText("13.0");
 	}
@@ -179,7 +178,7 @@ public class CalculatorGUITest extends JFrame {
 		window.button("btn_Del").click();
 		window.button("btn_Del").click();
 		window.button("btn_Del").click();
-//		Thread.sleep(2300);
+		Thread.sleep(2300);
 //		window.textBox().requireText("12.0");
 		window.textBox("screen").requireText("12.0");
 	}
